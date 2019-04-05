@@ -6,10 +6,7 @@
 	<artifactId>cruise</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<description>
-		Revature Project2 Back End 
-		(David White-Good, Matthew LeClair, Stephen Lo, Lev Levit)
-	</description>
+	<description>Revature Project2 Back End (David White-Good, Matthew LeClair, Stephen Lo, Lev Levit)</description>
 
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
