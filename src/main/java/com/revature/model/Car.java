@@ -33,4 +33,63 @@ public class Car {
 	
 	@Column(nullable=false)
 	private Address location;
+
+	public Car() {}
+
+	public Car(String make, String model, int maxCapacity) {
+		super();
+		this.make = make;
+		this.model = model;
+		this.maxCapacity = maxCapacity;
+		this.seatsLeft = maxCapacity;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getMake() {
+		return make;
+	}
+
+	public void setMake(String make) {
+		this.make = make;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public int getMaxCapacity() {
+		return maxCapacity;
+	}
+
+	public void setMaxCapacity(int maxCapacity) {
+		this.maxCapacity = maxCapacity;
+	}
+
+	public int getSeatsLeft() {
+		return seatsLeft;
+	}
+
+	public void setSeatsLeft(int seatsLeft) {
+		if (seatsLeft > 0 && seatsLeft <= this.maxCapacity)
+			this.seatsLeft = seatsLeft;
+	}
+
+	public Address getLocation() {
+		return location;
+	}
+
+	public void setLocation(Address location) {
+		this.location = location;
+	}
 }

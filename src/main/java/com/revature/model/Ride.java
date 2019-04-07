@@ -42,4 +42,55 @@ public class Ride {
 	@JoinColumn(name="ROUTE_ID", nullable=false)
 	@Column(nullable=false)
 	Route route;
+
+	public Ride() {}
+
+	public Ride(LocalDateTime startTime, LocalDateTime endTime, Rider rider, Car car, Route route) {
+		super();
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.rider = rider;
+		this.car = car;
+		this.route = route;
+	}
+
+	public LocalDateTime getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(LocalDateTime startTime) {
+		this.startTime = startTime;
+	}
+
+	public LocalDateTime getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(LocalDateTime endTime) {
+		this.endTime = endTime;
+	}
+
+	public Rider getRider() {
+		return rider;
+	}
+
+	public void setRider(Rider rider) {
+		this.rider = rider;
+	}
+
+	public Car getCar() {
+		return car;
+	}
+
+	public void setCar(Car car) {
+		this.car = car;
+	}
+
+	public Route getRoute() {
+		return route;
+	}
+
+	public void setRoute(Route route) {
+		this.route = route;
+	}
 }

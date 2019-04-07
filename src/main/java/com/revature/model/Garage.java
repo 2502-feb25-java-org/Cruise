@@ -28,4 +28,44 @@ public class Garage {
 	@Column(nullable=false)
 	private int spacesLeft;
 
+	public Garage() {}
+
+	public Garage(Address location, int maxCapacity) {
+		this.location = location;
+		this.maxCapacity = maxCapacity;
+		this.spacesLeft = maxCapacity;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Address getLocation() {
+		return location;
+	}
+
+	public void setLocation(Address location) {
+		this.location = location;
+	}
+
+	public int getMaxCapacity() {
+		return maxCapacity;
+	}
+
+	public void setMaxCapacity(int maxCapacity) {
+		this.maxCapacity = maxCapacity;
+	}
+
+	public int getSpacesLeft() {
+		return spacesLeft;
+	}
+
+	public void setSpacesLeft(int spacesLeft) {
+		if (spacesLeft > 0 && spacesLeft <= this.maxCapacity)
+			this.spacesLeft = spacesLeft;
+	}
 }

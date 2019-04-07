@@ -33,5 +33,54 @@ public class Route {
 	
 	@Column(nullable=false)
 	Duration duration;
-	
+
+	public Route() {}
+
+	public Route(Address start, Address destination, Double distance, Duration duration) {
+		super();
+		this.start = start;
+		this.destination = destination;
+		this.distance = distance;
+		this.duration = duration;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Address getStart() {
+		return start;
+	}
+
+	public void setStart(Address start) {
+		this.start = start;
+	}
+
+	public Address getDestination() {
+		return destination;
+	}
+
+	public void setDestination(Address destination) {
+		this.destination = destination;
+	}
+
+	public Double getDistance() {
+		return distance;
+	}
+
+	public void setDistance(Double distance) {
+		this.distance = distance;
+	}
+
+	public Duration getDuration() {
+		return duration;
+	}
+
+	public void setDuration(Duration duration) {
+		this.duration = duration;
+	}
 }
