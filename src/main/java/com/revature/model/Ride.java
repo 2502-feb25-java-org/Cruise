@@ -1,6 +1,7 @@
 package com.revature.model;
 
-import java.time.LocalDateTime;
+
+import java.sql.Timestamp;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.springframework.stereotype.Component;
 
@@ -26,9 +29,10 @@ public class Ride {
 	private int id;
 	
 	@Column(nullable=false)
-	LocalDateTime startTime;
+	Timestamp startTime;
 	
-	LocalDateTime endTime;
+	
+	Timestamp endTime;
 	
 	@ManyToOne(cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
 	@JoinColumn(name="RIDER_ID", nullable=false)
@@ -44,7 +48,7 @@ public class Ride {
 
 	public Ride() {}
 
-	public Ride(LocalDateTime startTime, LocalDateTime endTime, Rider rider, Car car, Route route) {
+	public Ride(Timestamp startTime, Timestamp endTime, Rider rider, Car car, Route route) {
 		super();
 		this.startTime = startTime;
 		this.endTime = endTime;
@@ -53,19 +57,19 @@ public class Ride {
 		this.route = route;
 	}
 
-	public LocalDateTime getStartTime() {
+	public Timestamp getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(LocalDateTime startTime) {
+	public void setStartTime(Timestamp startTime) {
 		this.startTime = startTime;
 	}
 
-	public LocalDateTime getEndTime() {
+	public Timestamp getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(LocalDateTime endTime) {
+	public void setEndTime(Timestamp endTime) {
 		this.endTime = endTime;
 	}
 

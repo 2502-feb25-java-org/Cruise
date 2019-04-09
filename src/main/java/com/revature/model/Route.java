@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.springframework.stereotype.Component;
 
@@ -28,21 +30,21 @@ public class Route {
 	
 	@ManyToOne(cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
 	@JoinColumn(name="START_ADDRESS_ID", nullable=false)
-	Address start;
+	private Address start;
 	
 	@ManyToOne(cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
 	@JoinColumn(name="DESTINATION_ADDRESS_ID", nullable=false)
-	Address destination;
+	private Address destination;
 	
 	@Column(nullable=false)
-	Double distance;
+	private Double distance;
 	
 	@Column(nullable=false)
-	Duration duration;
+	private long duration;
 
 	public Route() {}
 
-	public Route(Address start, Address destination, Double distance, Duration duration) {
+	public Route(Address start, Address destination, Double distance, long duration) {
 		super();
 		this.start = start;
 		this.destination = destination;
@@ -82,11 +84,11 @@ public class Route {
 		this.distance = distance;
 	}
 
-	public Duration getDuration() {
+	public long getDuration() {
 		return duration;
 	}
 
-	public void setDuration(Duration duration) {
+	public void setDuration(long duration) {
 		this.duration = duration;
 	}
 }

@@ -1,7 +1,9 @@
 package com.revature.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -52,9 +54,9 @@ public class Rider {
 	
 	private byte[] picture;
 	
-	@OneToMany(fetch=FetchType.EAGER, orphanRemoval = true)
-	@JoinColumn(name = "ADDRESS_ID")
-	private List<Address> addresses;
+	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name="ADDRESS_ID")
+	private List<Address> addresses = new ArrayList<Address>();
 
 	public Rider() {}
 
