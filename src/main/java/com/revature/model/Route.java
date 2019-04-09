@@ -1,8 +1,6 @@
 package com.revature.model;
 
 
-import java.time.Duration;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
