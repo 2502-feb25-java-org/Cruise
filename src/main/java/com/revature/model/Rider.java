@@ -1,7 +1,6 @@
 package com.revature.model;
 
-
-import java.awt.Image;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.springframework.stereotype.Component;
 
@@ -45,14 +46,20 @@ public class Rider {
 	@Column(nullable=false)
 	private String phoneNumber;
 	
-	private Image picture;
+	@Column(nullable=false)
+	@Temporal(TemporalType.DATE)
+	private Date DOB;
 	
+	private byte[] picture;
+	
+	@OneToMany(fetch=FetchType.EAGER, orphanRemoval = true)
+	@JoinColumn(name = "ADDRESS_ID")
 	private List<Address> addresses;
 
 	public Rider() {}
 
 	public Rider(String firstName, String lastName, String username, String password, String email, String phoneNumber,
-			Image picture, List<Address> addresses) {
+			Date dOB, List<Address> addresses) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -60,7 +67,7 @@ public class Rider {
 		this.password = password;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
-		this.picture = picture;
+		DOB = dOB;
 		this.addresses = addresses;
 	}
 
@@ -120,11 +127,19 @@ public class Rider {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Image getPicture() {
+	public Date getDOB() {
+		return DOB;
+	}
+
+	public void setDOB(Date dOB) {
+		DOB = dOB;
+	}
+
+	public byte[] getPicture() {
 		return picture;
 	}
 
-	public void setPicture(Image picture) {
+	public void setPicture(byte[] picture) {
 		this.picture = picture;
 	}
 
@@ -135,4 +150,5 @@ public class Rider {
 	public void setAddresses(List<Address> addresses) {
 		this.addresses = addresses;
 	}
+
 }

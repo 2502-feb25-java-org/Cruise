@@ -40,7 +40,6 @@ public class Ride {
 	
 	@ManyToOne(cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
 	@JoinColumn(name="ROUTE_ID", nullable=false)
-	@Column(nullable=false)
 	Route route;
 
 	public Ride() {}
