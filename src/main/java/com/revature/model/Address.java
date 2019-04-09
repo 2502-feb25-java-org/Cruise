@@ -1,6 +1,23 @@
 package com.revature.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
+import org.springframework.stereotype.Component;
+
+@Component
+@Entity
 public class Address {
+	
+	@Id
+	@Column(name="ADDRESS_ID")
+	@SequenceGenerator(name="ADDRESS_ID_GEN", sequenceName="ADDRESS_SEQ", allocationSize=1)
+	@GeneratedValue(generator="ADDRESS_ID_GEN", strategy=GenerationType.SEQUENCE)
+	private int id;
 	private String type;
 	private String line1;
 	private String line2;
