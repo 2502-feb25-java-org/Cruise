@@ -25,6 +25,7 @@ public class RiderController {
 			consumes=MediaType.APPLICATION_JSON_VALUE, 
 			produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Rider> add(@RequestBody Rider rider){
+		System.out.println(rider);
 		return new ResponseEntity<Rider>(riderRepo.save(rider), HttpStatus.CREATED);
 	}
 	
