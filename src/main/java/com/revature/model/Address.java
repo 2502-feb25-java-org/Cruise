@@ -27,16 +27,6 @@ public class Address {
 	
 	public Address() {}
 
-	public Address(String type, String line1, String line2, String city, String zipcode, String country) {
-		super();
-		this.type = type;
-		this.line1 = line1;
-		this.line2 = line2;
-		this.city = city;
-		this.zipcode = zipcode;
-		this.country = country;
-	}
-
 	public String getType() {
 		return type;
 	}

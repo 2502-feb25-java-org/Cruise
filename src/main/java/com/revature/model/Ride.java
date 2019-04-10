@@ -1,8 +1,5 @@
 package com.revature.model;
 
-
-import java.sql.Timestamp;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,47 +24,48 @@ public class Ride {
 	private int id;
 	
 	@Column(nullable=false)
-	Timestamp startTime;
+	private String startTime;
 	
-	
-	Timestamp endTime;
+	private String endTime;
 	
 	@ManyToOne(cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
 	@JoinColumn(name="RIDER_ID", nullable=false)
-	Rider rider;
+	private Rider rider;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="CAR_ID", nullable=false)
-	Car car;
+	private Car car;
 	
 	@ManyToOne(cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
 	@JoinColumn(name="ROUTE_ID", nullable=false)
-	Route route;
-
+	private Route route;
+	
+	@Column(nullable=false)
+	private Double cost;
+		
 	public Ride() {}
 
-	public Ride(Timestamp startTime, Timestamp endTime, Rider rider, Car car, Route route) {
-		super();
-		this.startTime = startTime;
-		this.endTime = endTime;
-		this.rider = rider;
-		this.car = car;
-		this.route = route;
+	public int getId() {
+		return id;
 	}
 
-	public Timestamp getStartTime() {
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(Timestamp startTime) {
+	public void setStartTime(String startTime) {
 		this.startTime = startTime;
 	}
 
-	public Timestamp getEndTime() {
+	public String getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(Timestamp endTime) {
+	public void setEndTime(String endTime) {
 		this.endTime = endTime;
 	}
 
@@ -93,5 +91,13 @@ public class Ride {
 
 	public void setRoute(Route route) {
 		this.route = route;
+	}
+
+	public Double getCost() {
+		return cost;
+	}
+
+	public void setCost(Double cost) {
+		this.cost = cost;
 	}
 }

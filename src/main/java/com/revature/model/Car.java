@@ -43,14 +43,6 @@ public class Car {
 	private Address location;
 
 	public Car() {}
-
-	public Car(String make, String model, int maxCapacity) {
-		super();
-		this.make = make;
-		this.model = model;
-		this.maxCapacity = maxCapacity;
-		this.seatsLeft = maxCapacity;
-	}
 	
 	public int getId() {
 		return id;
