@@ -1,6 +1,5 @@
 package com.revature.model;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +20,6 @@ import org.springframework.stereotype.Component;
 @Component
 @Entity
 public class Rider {
-	static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
 	@Id
 	@Column(name="RIDER_ID")
@@ -57,14 +55,6 @@ public class Rider {
 	private List<Address> addresses = new ArrayList<Address>();
 
 	public Rider() {}
-
-	public static SimpleDateFormat getDateFormat() {
-		return dateFormat;
-	}
-
-	public static void setDateFormat(SimpleDateFormat dateFormat) {
-		Rider.dateFormat = dateFormat;
-	}
 
 	public int getId() {
 		return id;
