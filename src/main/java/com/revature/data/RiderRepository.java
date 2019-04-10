@@ -8,6 +8,6 @@ import com.revature.model.Rider;
 @Repository
 public interface RiderRepository extends JpaRepository<Rider, Integer>{
 	
-	Rider findByUsernameIgnoreCase(String username);
+	public Rider findByUsernameIgnoreCaseAndPassword(String username, String password);
 
 }

@@ -1,7 +1,7 @@
 package com.revature.model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,14 +14,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.springframework.stereotype.Component;
+
 
 @Component
 @Entity
 public class Rider {
+	static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
 	@Id
 	@Column(name="RIDER_ID")
@@ -48,10 +48,9 @@ public class Rider {
 	private String phoneNumber;
 	
 	@Column(nullable=false)
-	@Temporal(TemporalType.DATE)
-	private Date DOB;
+	private String dob;
 	
-	private byte[] picture;
+	private String picture;
 	
 	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name="ADDRESS_ID")
@@ -59,17 +58,12 @@ public class Rider {
 
 	public Rider() {}
 
-	public Rider(String firstName, String lastName, String username, String password, String email, String phoneNumber,
-			Date dOB, List<Address> addresses) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.username = username;
-		this.password = password;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		DOB = dOB;
-		this.addresses = addresses;
+	public static SimpleDateFormat getDateFormat() {
+		return dateFormat;
+	}
+
+	public static void setDateFormat(SimpleDateFormat dateFormat) {
+		Rider.dateFormat = dateFormat;
 	}
 
 	public int getId() {
@@ -128,19 +122,19 @@ public class Rider {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Date getDOB() {
-		return DOB;
+	public String getdob() {
+		return dob;
 	}
 
-	public void setDOB(Date dOB) {
-		DOB = dOB;
+	public void setdob(String dob) {
+		this.dob = dob;
 	}
 
-	public byte[] getPicture() {
+	public String getPicture() {
 		return picture;
 	}
 
-	public void setPicture(byte[] picture) {
+	public void setPicture(String picture) {
 		this.picture = picture;
 	}
 
@@ -152,4 +146,12 @@ public class Rider {
 		this.addresses = addresses;
 	}
 
+	@Override
+	public String toString() {
+		return "Rider [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
+				+ ", password=" + password + ", email=" + email + ", phoneNumber=" + phoneNumber + ", dob=" + dob
+				+ ", picture=" + picture + ", addresses=" + addresses + "]";
+	}
+
+	
 }

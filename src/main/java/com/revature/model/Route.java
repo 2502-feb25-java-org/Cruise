@@ -40,14 +40,6 @@ public class Route {
 
 	public Route() {}
 
-	public Route(Address start, Address destination, Double distance, long duration) {
-		super();
-		this.start = start;
-		this.destination = destination;
-		this.distance = distance;
-		this.duration = duration;
-	}
-
 	public int getId() {
 		return id;
 	}
