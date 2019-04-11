@@ -35,13 +35,23 @@ public class Ride {
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="CAR_ID", nullable=false)
 	private Car car;
-	
-	@ManyToOne(cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
-	@JoinColumn(name="ROUTE_ID", nullable=false)
-	private Route route;
-	
+
 	@Column(nullable=false)
 	private Double cost;
+	
+	@ManyToOne(cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
+	@JoinColumn(name="START_ADDRESS_ID", nullable=false)
+	private Address start;
+	
+	@ManyToOne(cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
+	@JoinColumn(name="DESTINATION_ADDRESS_ID", nullable=false)
+	private Address destination;
+	
+	@Column(nullable=false)
+	private Double distance;
+	
+	@Column(nullable=false)
+	private long duration;
 		
 	public Ride() {}
 
@@ -85,19 +95,43 @@ public class Ride {
 		this.car = car;
 	}
 
-	public Route getRoute() {
-		return route;
-	}
-
-	public void setRoute(Route route) {
-		this.route = route;
-	}
-
 	public Double getCost() {
 		return cost;
 	}
 
 	public void setCost(Double cost) {
 		this.cost = cost;
+	}
+
+	public Address getStart() {
+		return start;
+	}
+
+	public void setStart(Address start) {
+		this.start = start;
+	}
+
+	public Address getDestination() {
+		return destination;
+	}
+
+	public void setDestination(Address destination) {
+		this.destination = destination;
+	}
+
+	public Double getDistance() {
+		return distance;
+	}
+
+	public void setDistance(Double distance) {
+		this.distance = distance;
+	}
+
+	public long getDuration() {
+		return duration;
+	}
+
+	public void setDuration(long duration) {
+		this.duration = duration;
 	}
 }
