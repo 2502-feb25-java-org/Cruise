@@ -19,7 +19,7 @@ import com.revature.model.Ride;
 import com.revature.model.Rider;
 
 @RestController
-@RequestMapping("/rides")
+@RequestMapping("/ride")
 @CrossOrigin
 public class RideController {
 	

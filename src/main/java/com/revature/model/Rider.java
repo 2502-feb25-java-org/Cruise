@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
@@ -50,9 +51,9 @@ public class Rider {
 	
 	private String picture;
 	
-	@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	@ManyToOne(cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
 	@JoinColumn(name="ADDRESS_ID")
-	private List<Address> addresses = new ArrayList<Address>();
+	private Address address;
 
 	public Rider() {}
 
@@ -112,11 +113,11 @@ public class Rider {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getdob() {
+	public String getDob() {
 		return dob;
 	}
 
-	public void setdob(String dob) {
+	public void setDob(String dob) {
 		this.dob = dob;
 	}
 
@@ -128,20 +129,18 @@ public class Rider {
 		this.picture = picture;
 	}
 
-	public List<Address> getAddresses() {
-		return addresses;
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setAddresses(List<Address> addresses) {
-		this.addresses = addresses;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	@Override
 	public String toString() {
 		return "Rider [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
 				+ ", password=" + password + ", email=" + email + ", phoneNumber=" + phoneNumber + ", dob=" + dob
-				+ ", picture=" + picture + ", addresses=" + addresses + "]";
+				+ ", picture=" + picture + ", address=" + address + "]";
 	}
-
-	
 }
