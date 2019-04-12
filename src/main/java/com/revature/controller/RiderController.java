@@ -32,8 +32,9 @@ public class RiderController {
 	@RequestMapping(value = "/get", method=RequestMethod.POST, 
 			consumes=MediaType.APPLICATION_JSON_VALUE, 
 			produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Rider> validateUser(@RequestBody String[] credentials){
+	public ResponseEntity<Rider> get(@RequestBody String[] credentials){
 		Rider rider = riderRepo.findByUsernameIgnoreCaseAndPassword(credentials[0], credentials[1]);
+		System.out.println(rider);
 		if (rider != null)
 			return new ResponseEntity<Rider>(rider, HttpStatus.FOUND);
 		else
