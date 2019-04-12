@@ -24,20 +24,20 @@ public class RiderController {
 	@RequestMapping(value ="/add", method=RequestMethod.POST, 
 			consumes=MediaType.APPLICATION_JSON_VALUE, 
 			produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Rider> add(@RequestBody Rider rider){
-		System.out.println(rider);
-		return new ResponseEntity<Rider>(riderRepo.save(rider), HttpStatus.CREATED);
+	public Rider add(@RequestBody Rider rider){
+		return riderRepo.save(rider);
 	}
 	
-	@RequestMapping(value = "/get", method=RequestMethod.POST, 
+	@RequestMapping(value ="/find", method=RequestMethod.POST, 
 			consumes=MediaType.APPLICATION_JSON_VALUE, 
 			produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Rider> get(@RequestBody String[] credentials){
+	public Rider find(@RequestBody String credentials[]){
 		Rider rider = riderRepo.findByUsernameIgnoreCaseAndPassword(credentials[0], credentials[1]);
-		System.out.println(rider);
-		if (rider != null)
-			return new ResponseEntity<Rider>(rider, HttpStatus.FOUND);
+		System.out.println("Found " + rider);
+		if (rider != null) {
+			return rider;
+		}
 		else
-			return new ResponseEntity<Rider>(rider, HttpStatus.NOT_FOUND);
+			return null;
 	}
 }
