@@ -51,7 +51,7 @@ public class Rider {
 	
 	private String picture;
 	
-	@ManyToOne(cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="ADDRESS_ID")
 	private Address address;
 
