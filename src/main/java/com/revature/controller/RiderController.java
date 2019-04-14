@@ -15,7 +15,7 @@ import com.revature.model.Rider;
 
 @RestController
 @RequestMapping("/rider")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class RiderController {
 	
 	@Autowired
@@ -26,6 +26,16 @@ public class RiderController {
 			produces=MediaType.APPLICATION_JSON_VALUE)
 	public Rider add(@RequestBody Rider rider){
 		return riderRepo.save(rider);
+	}
+	
+	@RequestMapping(value ="/update", method=RequestMethod.POST, 
+			consumes=MediaType.APPLICATION_JSON_VALUE, 
+			produces=MediaType.APPLICATION_JSON_VALUE)
+	public Rider update(@RequestBody Rider rider){
+		if (rider.getId() != 0)
+			return riderRepo.save(rider);
+		else
+			return null;
 	}
 	
 	@RequestMapping(value ="/find", method=RequestMethod.POST, 

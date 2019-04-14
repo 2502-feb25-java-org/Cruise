@@ -39,11 +39,11 @@ public class Ride {
 	@Column(nullable=false)
 	private Double cost;
 	
-	@ManyToOne(cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="START_ADDRESS_ID", nullable=false)
 	private Address start;
 	
-	@ManyToOne(cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="DESTINATION_ADDRESS_ID", nullable=false)
 	private Address destination;
 	

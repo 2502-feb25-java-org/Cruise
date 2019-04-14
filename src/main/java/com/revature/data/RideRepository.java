@@ -11,6 +11,6 @@ import com.revature.model.Rider;
 @Repository
 public interface RideRepository extends JpaRepository<Ride, Integer>{
 	
-	public List<Ride> findByRider(Rider rider);
+	public List<Ride> findByRiderId(int riderId);
 
 }

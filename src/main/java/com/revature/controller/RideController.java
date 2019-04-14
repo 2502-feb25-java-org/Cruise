@@ -26,30 +26,29 @@ public class RideController {
 	@Autowired
 	RideRepository rideRepo;
 	
-	@Autowired
-	RiderRepository riderRepo;
-	
 	@RequestMapping(value ="/add", method=RequestMethod.POST, 
 			consumes=MediaType.APPLICATION_JSON_VALUE, 
 			produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Ride> add(@RequestBody Ride ride){
-		System.out.println(ride);
-		return new ResponseEntity<Ride>(rideRepo.save(ride), HttpStatus.CREATED);
+	public Ride add(@RequestBody Ride ride){
+		//System.out.println(ride);
+		return rideRepo.save(ride);
 	}
 	
-	@RequestMapping(value = "/get", method=RequestMethod.POST, 
+	@RequestMapping(value ="/update", method=RequestMethod.POST, 
 			consumes=MediaType.APPLICATION_JSON_VALUE, 
 			produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Ride>> validateUser(@RequestBody String username){
-		Rider rider = riderRepo.findByUsernameIgnoreCase(username);
-		if (rider != null) {
-			List<Ride> rides = rideRepo.findByRider(rider);
-			if (rides.size() != 0)
-				return new ResponseEntity<List<Ride>>(rides, HttpStatus.FOUND);
-		}
-		return new ResponseEntity<List<Ride>>(new ArrayList<Ride>(), HttpStatus.NOT_FOUND);
+	public Ride update(@RequestBody Ride ride){
+		//System.out.println(ride);
+		if (ride.getId() != 0)
+			return rideRepo.save(ride);
+		else 
+			return null;
 	}
 	
-	
-
+	@RequestMapping(value = "/find", method=RequestMethod.POST, 
+			consumes=MediaType.APPLICATION_JSON_VALUE, 
+			produces=MediaType.APPLICATION_JSON_VALUE)
+	public List<Ride> find(@RequestBody int riderId){
+		return rideRepo.findByRiderId(riderId);
+	}
 }
