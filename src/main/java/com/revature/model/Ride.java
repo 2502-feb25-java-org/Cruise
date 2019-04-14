@@ -40,8 +40,8 @@ public class Ride {
 	private Double cost;
 	
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="START_ADDRESS_ID", nullable=false)
-	private Address start;
+	@JoinColumn(name="ORIGIN_ADDRESS_ID", nullable=false)
+	private Address origin;
 	
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="DESTINATION_ADDRESS_ID", nullable=false)
@@ -104,11 +104,11 @@ public class Ride {
 	}
 
 	public Address getStart() {
-		return start;
+		return origin;
 	}
 
-	public void setStart(Address start) {
-		this.start = start;
+	public void setStart(Address origin) {
+		this.origin = origin;
 	}
 
 	public Address getDestination() {
