@@ -72,4 +72,12 @@ public class Garage {
 		if (spacesLeft > 0 && spacesLeft <= this.maxCapacity)
 			this.spacesLeft = spacesLeft;
 	}
+
+	@Override
+	public String toString() {
+		return "Garage [id=" + id + ", location=" + location + ", maxCapacity=" + maxCapacity + ", spacesLeft="
+				+ spacesLeft + "]";
+	}
+	
+	
 }

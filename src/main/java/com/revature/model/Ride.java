@@ -9,12 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import org.springframework.stereotype.Component;
 
 @Component
 @Entity
+
 public class Ride {
 	
 	@Id
@@ -32,18 +34,18 @@ public class Ride {
 	@JoinColumn(name="RIDER_ID", nullable=false)
 	private Rider rider;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
 	@JoinColumn(name="CAR_ID", nullable=false)
 	private Car car;
 
 	@Column(nullable=false)
 	private Double cost;
 	
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="ORIGIN_ADDRESS_ID", nullable=false)
 	private Address origin;
 	
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="DESTINATION_ADDRESS_ID", nullable=false)
 	private Address destination;
 	
@@ -103,11 +105,11 @@ public class Ride {
 		this.cost = cost;
 	}
 
-	public Address getStart() {
+	public Address getOrigin() {
 		return origin;
 	}
 
-	public void setStart(Address origin) {
+	public void setOrigin(Address origin) {
 		this.origin = origin;
 	}
 
@@ -134,4 +136,13 @@ public class Ride {
 	public void setDuration(long duration) {
 		this.duration = duration;
 	}
+
+	@Override
+	public String toString() {
+		return "Ride [id=" + id + ", startTime=" + startTime + ", endTime=" + endTime + ", rider=" + rider + ", car="
+				+ car + ", cost=" + cost + ", origin=" + origin + ", destination=" + destination + ", distance="
+				+ distance + ", duration=" + duration + "]";
+	}
+	
+	
 }

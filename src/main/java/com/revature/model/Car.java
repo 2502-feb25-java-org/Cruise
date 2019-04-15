@@ -38,7 +38,7 @@ public class Car {
 	@Column(nullable=false)
 	private int seatsLeft;
 	
-	@ManyToOne(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="ADDRESS_ID", nullable=false)
 	private Address location;
 
@@ -92,4 +92,12 @@ public class Car {
 	public void setLocation(Address location) {
 		this.location = location;
 	}
+
+	@Override
+	public String toString() {
+		return "Car [id=" + id + ", status=" + status + ", make=" + make + ", model=" + model + ", maxCapacity="
+				+ maxCapacity + ", seatsLeft=" + seatsLeft + ", location=" + location + "]";
+	}
+	
+	
 }
