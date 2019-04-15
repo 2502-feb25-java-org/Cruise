@@ -34,7 +34,7 @@ public class Ride {
 	@JoinColumn(name="RIDER_ID", nullable=false)
 	private Rider rider;
 	
-	@ManyToOne(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
+	@ManyToOne(cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
 	@JoinColumn(name="CAR_ID", nullable=false)
 	private Car car;
 
@@ -54,6 +54,9 @@ public class Ride {
 	
 	@Column(nullable=false)
 	private long duration;
+	
+	@Column(nullable=false)
+	private String status;
 		
 	public Ride() {}
 
@@ -135,6 +138,15 @@ public class Ride {
 
 	public void setDuration(long duration) {
 		this.duration = duration;
+	}
+	
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	@Override
