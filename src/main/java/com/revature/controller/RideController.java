@@ -26,7 +26,7 @@ public class RideController {
 			consumes=MediaType.APPLICATION_JSON_VALUE, 
 			produces=MediaType.APPLICATION_JSON_VALUE)
 	public Ride add(@RequestBody Ride ride){
-		//System.out.println(ride);
+		System.out.println(ride);
 		return rideRepo.save(ride);
 	}
 	

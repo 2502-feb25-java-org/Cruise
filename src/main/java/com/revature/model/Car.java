@@ -41,6 +41,8 @@ public class Car {
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="ADDRESS_ID", nullable=false)
 	private Address location;
+	
+	private String picture; 
 
 	public Car() {}
 	
@@ -92,12 +94,28 @@ public class Car {
 	public void setLocation(Address location) {
 		this.location = location;
 	}
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
 
 	@Override
 	public String toString() {
 		return "Car [id=" + id + ", status=" + status + ", make=" + make + ", model=" + model + ", maxCapacity="
-				+ maxCapacity + ", seatsLeft=" + seatsLeft + ", location=" + location + "]";
+				+ maxCapacity + ", seatsLeft=" + seatsLeft + ", location=" + location + ", picture=" + picture + "]";
 	}
-	
-	
+
+
 }
